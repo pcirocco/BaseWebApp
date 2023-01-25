@@ -77,7 +77,7 @@ app.set('view engine', 'ejs');
 
 // })
 
-app.get('/json', async function(req, res, next) {
+app.get('/ticket', async function(req, res, next) {
   
   const hubspotClient = new hubspot.Client({
     accessToken: process.env.HS_TOKEN
@@ -117,6 +117,58 @@ app.get('/json', async function(req, res, next) {
 
 })
 
+app.get('/getContact', async function(req,res) {
+
+  const hubspotClient = new hubspot.Client({
+    accessToken: process.env.HS_TOKEN
+  });
+
+  const PublicObjectSearchRequest = 
+    { 
+      "filterGroups" : [{
+          "filters":[{
+            "propertyName":"firstname",
+            "operator":"EQ",
+            "value": req.query["firstname"]
+        }],
+        
+          // "filters": [{
+          //   "propertyName":"firstname",
+          //   "operator":"EQ",
+          //   "value": req.query["lastname"]
+          // }]
+      }],"filterGroups" : [{
+        "filters": [{
+          "propertyName":"lastname",
+          "operator":"EQ",
+          "value": req.query["lastname"]
+        }],
+    }],
+    };
+    console.log(req.query["firstname"])
+    console.log(req.query["lastname"])
+
+  // const PublicObjectSearchRequest = 
+  // { filterGroups: 
+  //   [{"filters":
+  //   [{"value":"Teun",
+  //   "propertyName":"firstname",
+  //   "operator":"EQ"}]}], sorts: ["firstname"], properties: [["firstname","lastname"]], limit: 0, after: 0 };
+
+
+try {
+  const apiResponse = await hubspotClient.crm.contacts.searchApi.doSearch(PublicObjectSearchRequest);
+  console.log(JSON.stringify(apiResponse, null, 2));
+  const data = apiResponse
+  res.send(data)
+
+} catch (e) {
+  e.message === 'HTTP request failed'
+    ? console.error(JSON.stringify(e.response, null, 2))
+    : console.error(e)
+}
+})
+
 app.get('/', function(req, res) {
   res.render('pages/index')
 })
@@ -125,6 +177,7 @@ app.get('/about', function(request, response, next) {
   response.render('pages/about');
   next();
 });
+
 
 
 app.listen(app.get('port'), function() {

@@ -19,7 +19,7 @@ const searchWeather = () => {
 }
 
 const getTickets = (ticketQuery) => {
-    const url = "http://localhost:5000/json"
+    const url = "http://localhost:5000/ticket"
     //const url = 'https://boiling-plains-31523.herokuapp.com/json'
     $.ajax({
   
@@ -54,7 +54,40 @@ const searchTickets = () => {
   console.log('search tickets called' + ticketQuery)
 }
 
+const searchContact = () => {
+  const firstNameQ = $(".search-first-name").val()
+  const lastNameQ = $(".search-last-name").val()
+  getContact(firstNameQ, lastNameQ)
+  //getContact(firstNameQ)
+}
 
+
+const getContact = (firstNameQ, lastNameQ) => {
+//const getContact = (firstNameQ) => {
+  const url = 'http://localhost:5000/getContact'
+
+  $.ajax({
+    url: url,
+    type: "GET",
+      dataType: "json",
+      data: {
+        firstname: firstNameQ,
+        lastname: lastNameQ
+      },
+      success: function (data) {
+        var x = JSON.stringify(data);
+        console.log(x);
+        $(".email").text('Email: ' + JSON.stringify(data['results'][0]['properties']['email']))
+        $(".phone").text('Create Date: ' + JSON.stringify(data['results'][0]['properties']['createdate']))
+    },
+
+    // Error handling 
+    error: function (error) {
+        console.log(`Error ${error}`);
+    }
+  })
+
+}
 
 
 // const getTickets = () => {
