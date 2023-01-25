@@ -185,42 +185,5 @@ app.listen(app.get('port'), function() {
 });
 
 
-// app.get('/projects', function(request, response) {
-//   response.render('pages/projects');
-// });
-
-
-// app.get('/json', async function(req, res, next) {
-//   // res.render('pages/index')
-//   const hubspotClient = new hubspot.Client({
-//     accessToken: process.env.HS_TOKEN
-//   });
-//   const PublicObjectSearchRequest = {
-//       "filterGroups":[{
-//         "filters": [
-//           {
-//             "propertyName": "subject",
-//             "operator": "EQ",
-//               "value": "Test Ticket -- In-Shape"
-//           }]
-//       }]
-//   }
-
-//   try {
-//     const apiResponse = await hubspotClient.crm.tickets.searchApi.doSearch(PublicObjectSearchRequest);
-//     console.log(JSON.stringify(apiResponse, null, 2));
-//     const data = apiResponse
-//     //res.render('pages/index', {data: apiResponse})
-//     res.send(data)
-//     //res.send(JSON.stringify(data))
-//     //res.render('pages/index')
-
-//   } catch (e) {
-//     e.message === 'HTTP request failed'
-//       ? console.error(JSON.stringify(e.response, null, 2))
-//       : console.error(e)
-//   }
- //res.render('pages/index')
-//  next();
 
 // })
