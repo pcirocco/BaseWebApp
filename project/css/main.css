@@ -1,8 +1,8 @@
 
 body {
-  font-family: Arial, serif;
+  font-family: 'Poppins', sans-serif;
   text-align: center;
-  color: #343a40;
+  color: #403834;
   font-size: 22px;
 }
 
@@ -22,7 +22,7 @@ button {
 }
 
 .page-header {
-  background-color: #00bda5;
+  background-color: #f36d00;
   padding-top: 40px;
   padding-bottom: 80px;
   color: #ffffff;

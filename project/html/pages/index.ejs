@@ -7,16 +7,36 @@
   <!-- the classes 'page-header' and 'btn btn-dark' create bootstrap components.  -->
   <!-- Check out more components here: http://getbootstrap.com/components/ -->
   <div class="page-header">
+    <% include ../helpers/navbar %>
 
   
-    <h1>Hello World</h1>
+    <h1>HubSpot Ticket Lookup</h1>
   </div>
 
-  <p>Click on the button for a surprise.</p>
+  <!-- <input class="search" type="text" placeholder="Enter city name...">
+  <button type="button" onClick="searchWeather()">Search</button> -->
 
-  <button onClick="showPicture()" class="btn btn-dark">Click me</button>
+  <input class="search" type="text" name="hs_ticket_id" placeholder="Enter a ticket id...">
+  <button type="button" onClick="searchTickets()">Search</button>
 
-  <div id="image"></div>
+
+  <!-- <div id="image"></div>
+
+  <div class="city">
+
+  </div>
+
+  <div class="ticket"> -->
+
+  </div>
+
+  <div>
+      <body>
+        <div class="ticket"></div>
+        <div class="priority"></div>
+      </body>
+
+  </div>
   
 </body>
 
