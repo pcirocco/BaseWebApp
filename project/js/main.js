@@ -19,8 +19,8 @@ const searchWeather = () => {
 }
 
 const getTickets = (ticketQuery) => {
-    //const url = "http://localhost:5000/json"
-    const url = 'https://boiling-plains-31523.herokuapp.com/json'
+    const url = "http://localhost:5000/json"
+    //const url = 'https://boiling-plains-31523.herokuapp.com/json'
     $.ajax({
   
       // Our sample url to make request 
